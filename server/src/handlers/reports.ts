@@ -1,94 +1,61 @@
-import { type ReportInput, type LoanReport } from '../schema';
+import { type DocumentReport, type UserBorrowingReport, type OverdueReport, type DashboardStats } from '../schema';
 
-export async function generateLoanReport(input: ReportInput): Promise<LoanReport> {
+export async function getDocumentReport(): Promise<DocumentReport[]> {
     // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is generating comprehensive loan reports with statistics for specified period.
-    return Promise.resolve({
-        total_loans_by_type: {
-            buku_tanah: 0,
-            surat_ukur: 0,
-            warkah: 0
-        },
-        total_returns: 0,
-        overdue_loans: [],
-        loans_per_user: {}
-    } as LoanReport);
+    // The goal of this handler is to generate report of borrowings per document type.
+    // Should return total borrowed, returned, and currently borrowed counts for each document type.
+    return [];
 }
 
-export async function getDailyReport(date: Date, seksi?: string): Promise<LoanReport> {
+export async function getUserBorrowingReport(): Promise<UserBorrowingReport[]> {
     // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is generating daily loan report, optionally filtered by seksi.
-    return Promise.resolve({
-        total_loans_by_type: {
-            buku_tanah: 0,
-            surat_ukur: 0,
-            warkah: 0
-        },
-        total_returns: 0,
-        overdue_loans: [],
-        loans_per_user: {}
-    } as LoanReport);
+    // The goal of this handler is to generate report of borrowings per user.
+    // Should return total borrowings and overdue borrowings count for each user.
+    return [];
 }
 
-export async function getWeeklyReport(startDate: Date, endDate: Date, seksi?: string): Promise<LoanReport> {
+export async function getOverdueReport(): Promise<OverdueReport[]> {
     // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is generating weekly loan report, optionally filtered by seksi.
-    return Promise.resolve({
-        total_loans_by_type: {
-            buku_tanah: 0,
-            surat_ukur: 0,
-            warkah: 0
-        },
-        total_returns: 0,
-        overdue_loans: [],
-        loans_per_user: {}
-    } as LoanReport);
+    // The goal of this handler is to generate detailed report of overdue borrowings.
+    // Should return list of all users with documents not returned after 30 days.
+    return [];
 }
 
-export async function getMonthlyReport(year: number, month: number, seksi?: string): Promise<LoanReport> {
+export async function getDashboardStats(): Promise<DashboardStats> {
     // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is generating monthly loan report, optionally filtered by seksi.
-    return Promise.resolve({
-        total_loans_by_type: {
-            buku_tanah: 0,
-            surat_ukur: 0,
-            warkah: 0
-        },
-        total_returns: 0,
-        overdue_loans: [],
-        loans_per_user: {}
-    } as LoanReport);
+    // The goal of this handler is to provide overview statistics for admin/kepala_seksi dashboard.
+    // Should return counts of documents, users, borrowings, active borrowings, and overdue items.
+    return {
+        total_documents: 0,
+        total_users: 0,
+        total_borrowings: 0,
+        active_borrowings: 0,
+        overdue_borrowings: 0,
+    } as DashboardStats;
 }
 
-export async function getUserLoanSummary(userId: number, startDate: Date, endDate: Date): Promise<any> {
+export async function getUserDashboardStats(userId: number): Promise<DashboardStats> {
     // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is generating loan summary for a specific user in a date range.
-    return Promise.resolve({
-        total_loans: 0,
-        total_returns: 0,
-        active_loans: 0,
-        overdue_loans: 0
-    });
+    // The goal of this handler is to provide user-specific statistics for user dashboard.
+    // Should return borrowing stats specific to the requesting user.
+    return {
+        total_documents: 0,
+        total_users: 0,
+        total_borrowings: 0,
+        active_borrowings: 0,
+        overdue_borrowings: 0,
+    } as DashboardStats;
 }
 
-export async function getDocumentUtilization(startDate: Date, endDate: Date): Promise<any> {
+export async function getKepalaSeccionDashboardStats(sectionUsers: number[]): Promise<DashboardStats> {
     // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is analyzing document utilization rates by type and period.
-    return Promise.resolve({
-        buku_tanah: {
-            total_documents: 0,
-            loans_count: 0,
-            utilization_rate: 0
-        },
-        surat_ukur: {
-            total_documents: 0,
-            loans_count: 0,
-            utilization_rate: 0
-        },
-        warkah: {
-            total_documents: 0,
-            loans_count: 0,
-            utilization_rate: 0
-        }
-    });
+    // The goal of this handler is to provide stats for users under kepala seksi coordination.
+    // Should return aggregated stats for all users in the section.
+    return {
+        total_documents: 0,
+        total_users: 0,
+        total_borrowings: 0,
+        active_borrowings: 0,
+        overdue_borrowings: 0,
+    } as DashboardStats;
 }
